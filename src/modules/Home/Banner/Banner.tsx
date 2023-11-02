@@ -8,7 +8,7 @@ const Banner = () => {
     <div className="hero h-[800px] md:h-[960px] relative bg-radient-radial w-full"></div>
     <div className=" hero-bg bg-hero-pattern absolute bottom-0 top-auto w-full max-w-full left-0 h-auto text-white-color md:top-[250px] md:h-[850px] md:left-1/2 lg:left-[51%] 2xl:left-[50.8%] 3xl:left-[50.7%] 3xl:top-[200px] 3xl:max-w-[540px]  ">
       <motion.div  
-    initial={{ opacity: 0,x:500 }}
+    initial={{ opacity: 0,x:100 }}
   whileInView={{ opacity: 1,x:0 }}
   viewport={{ once: true }}
     transition={{duration:0.5, delay:0.25}}
@@ -18,7 +18,7 @@ const Banner = () => {
       </motion.div>
     </div>
     <motion.div 
-    initial={{ opacity: 0,x:500 }}
+    initial={{ opacity: 0,x:100 }}
   whileInView={{ opacity: 1,x:0 }}
   viewport={{ once: true }}
     transition={{duration:0.5, delay:0.25}}
@@ -26,7 +26,7 @@ const Banner = () => {
     className="hero-img  absolute z-[1] top-1/2 w-full 2xs:top-[40%] 2xs:w-full md:top-0 md:w-full">
       <img className=' mt-0 ml-[50%] max-w-[300px] w-auto  2xs:max-w-[400px] md:mt-[102px] md:ml-[45%] md:max-w-[900px]' src="assets/images/banner-burger.webp" alt="" />
     </motion.div>
-      <motion.div  initial={{ opacity: 0,x:-500 }}
+      <motion.div  initial={{ opacity: 0,x:-100 }}
     whileInView={{ opacity: 1,x:0 }}
     viewport={{ once: true }}
       transition={{duration:0.5, delay:0.25}}
