@@ -59,8 +59,8 @@ export default {
       instruction: "linear-gradient(90deg, #f37735 0%, #f9a232 100%);",
       "footer-background":
         "radial-gradient(100% 100% at 50% 0%, #365368 0%, #1e2f40 100%)",
-      "body-background": "url('assets/images/body-background.png')",
-      "chevron-down-bg": "url('assets/images/icons/chevron-down.png')",
+      "body-background": "url('/assets/images/body-background.png')",
+      "chevron-down-bg": "url('/assets/images/icons/chevron-down.png')",
     },
     extend: {
       maxWidth: {
