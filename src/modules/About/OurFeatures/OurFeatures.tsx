@@ -1,12 +1,17 @@
 import { faHamburger, faMoneyBillWave, faPizzaSlice, faUserFriends } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import {motion} from "framer-motion"
 
 const OurFeatures = () => {
   return (
     <section style={{background:`url("assets/images/features-bg.webp")`}} className='bg-no-repeat bg-cover pt-[96px] pb-[48px] mt-[88px] md:pt-[88px] md:pb-0 xl:pt-[65px] xl:pb-[42px]  xl:my-0'>
       <div className="elemental-container">
-        <div className="feature__content-left animate__animated animate__fadeIn flex flex-wrap w-full xl:w-[59.298%]">
+        <motion.div 
+         initial={{ opacity: 0,x:0 }}
+         whileInView={{ opacity: 1,x:0 }}
+         viewport={{ once: true }}
+           transition={{duration:0.5, delay:0.25}}
+        className="feature__content-left  flex flex-wrap w-full xl:w-[59.298%]">
           <div className="title-content content-center items-center flex-wrap p-0 mb-[68px] pl-[10px] w-full">
             <h2 className='font-extrabold uppercase text-[44px] text-white-color md:text-[54px]'>
             Our Features
@@ -40,8 +45,13 @@ const OurFeatures = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className='feature__content-right animate__animated animate__fadeInUp flex w-full xl:w-[40.484%] content-center items-center flex-wrap p-0'>
+        </motion.div>
+        <motion.div
+        initial={{ opacity: 0,y:300 }}
+        whileInView={{ opacity: 1,y:0 }}
+        viewport={{ once: true }}
+          transition={{duration:0.5, delay:0.25}}
+        className='feature__content-right  flex w-full xl:w-[40.484%] content-center items-center flex-wrap p-0'>
           <div className="bg-over content-center items-center ml-0 mr-2.5 my-[50px] flex flex-wrap w-full md:ml-0 md:mr-2.5 md:my-0 xl:mb-[-130px] xl:-mt-36 xl:mx-0 pl-[15px] pr-[0.5rem] lg:max-w-full">
             <div className="features-coloring bg-hero-pattern relative pt-[72px] pb-6 px-6 md:pt-[92px] md:pb-12 md:px-12 lg:pt-48 lg:pb-[150px] lg:px-[63px] right-0 bottom-0">
               <div className='mb-12 max-w-full'>
@@ -62,7 +72,7 @@ const OurFeatures = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
     

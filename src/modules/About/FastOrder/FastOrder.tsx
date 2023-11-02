@@ -1,9 +1,14 @@
-
+import {motion} from "framer-motion"
 const FastOrder = () => {
   return (
-    <section style={{background:`url("assets/images/bg-fastorder.webp")`}} className=' bg-[center_left] md:bg-[center_center] text-center md:text-start bg-no-repeat bg-cover bg-scroll mt-[46px]  mb-0 pt-24 pb-[70px] px-0 md:pt-[100px] md:pb-[72px] xl:mt-[110px] xl:mb-[120px] xl:pt-[72px] xl:pb-[92px]'>
+    <section style={{background:`url("assets/images/bg-fastorder.webp")`}} className=' bg-[center_left] md:bg-[center_center] text-center md:text-start bg-no-repeat bg-cover bg-scroll mt-[46px]  mb-0 pt-24 pb-[70px] px-0 md:pt-[100px] md:pb-[72px] xl:mt-[110px] xl:mb-[120px] xl:pt-[72px] xl:pb-[92px] overflow-hidden'>
       <div className="elemental-container">
-        <div className="fastOrder-text animate__animated animate__fadeInLeft md:order-10 xl:order-9 md:w-[70%] xl:w-[46.751%] flex relative">
+        <motion.div
+        initial={{ opacity: 0,x:-300 }}
+        whileInView={{ opacity: 1,x:0 }}
+        viewport={{ once: true }}
+          transition={{duration:0.5, delay:0.25}}
+        className="fastOrder-text md:order-10 xl:order-9 md:w-[70%] xl:w-[46.751%] flex relative">
           <div className="fastOrder-text__content flex flex-wrap w-full content-center items-center pt-0 pb-9 px-2.5 xl:px-2.5 xl:py-0">
             <div className="title mb-5 w-full">
               <h2 className='text-4xl font-extrabold uppercase md:text-[55px] font-nunito text-white-color'>ORDER AND PAY IN A FEW MINUTES</h2>
@@ -39,12 +44,17 @@ const FastOrder = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="fastOrder-img animate__animated animate__fadeInRight md:order-9 xl:order-10 relative hidden md:block md:w-[30%] xl:w-[53.031%]">
+        </motion.div>
+        <motion.div
+        initial={{ opacity: 0,x:300 }}
+        whileInView={{ opacity: 1,x:0 }}
+        viewport={{ once: true }}
+          transition={{duration:0.5, delay:0.25}}
+        className="fastOrder-img  md:order-9 xl:order-10 relative hidden md:block md:w-[30%] xl:w-[53.031%]">
           <div className="fastOrder-img__wrapper flex flex-wrap w-full content-center items-center ml-0 mr-2.5 mt-[50px] mb-6  md:mr-[15px] md:my-0 xl:mb-[-110px] xl:mt-0 xl:mx-[15px] text-right">
             <img src="assets/images/fast-order-burger.webp" alt="" width="580" height="630" />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

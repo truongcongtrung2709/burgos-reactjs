@@ -1,9 +1,14 @@
-
+import {motion} from "framer-motion"
 const Message = () => {
   return (
     <section className='overflow-hidden p-0 mt-0 mb-[96px] md:mb-[70px] md:px-[10px] md:py-0 xl:mb-[120px]'>
       <div className="elemental-container">
-        <div className='message  animate__animated animate__fadeInLeft order-10 xl:order-9 w-full md:w-[50%] xl:w-[63.01%]'>
+        <motion.div 
+        initial={{ opacity: 0,x:-300 }}
+        whileInView={{ opacity: 1,x:0 }}
+        viewport={{ once: true }}
+          transition={{duration:0.5, delay:0.25}}
+        className='message  order-10 xl:order-9 w-full md:w-[50%] xl:w-[63.01%]'>
           <div className="message__wrapper flex flex-wrap w-full px-5 py-0 md:pb-0 md:pt-[10px] md:px-[10px] xl:pl-0 xl:pr-[50px] xl:py-0">
             <div className="title mb-5 ">
               <h3 className='font-bold'>SEND US MESSAGE</h3>
@@ -39,8 +44,13 @@ const Message = () => {
               </form>
             </div>
           </div>
-        </div>
-        <div className='information animate__animated animate__fadeInLeft order-9 xl:order-10 w-full md:w-[50%] xl:-w-[36.922%]'>
+        </motion.div>
+        <motion.div
+        initial={{ opacity: 0,x:300 }}
+        whileInView={{ opacity: 1,x:0 }}
+        viewport={{ once: true }}
+          transition={{duration:0.5, delay:0.25}}
+        className='information  order-9 xl:order-10 w-full md:w-[50%] xl:-w-[36.922%]'>
           <div className="information__wrapper flex flex-wrap w-full p-0 mt-0 mb-[46px] mx-0 md:mt-0 md:mb-[46px] xl:pl-0 xl:pr-[50px] xl:pt-[85px] xl:pb-0 ">
             <div className='work-time mb-5 flex flex-wrap max-w-[350px]'>
               <div className="img-left flex-[0_0_25%] max-w-[25%] p-0">
@@ -73,7 +83,7 @@ const Message = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

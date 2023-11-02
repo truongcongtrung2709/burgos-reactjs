@@ -1,13 +1,23 @@
-
+import {motion} from "framer-motion"
 const Introduce = () => {
   return (
     <section className='my-24 md:mt-20 md:mb-[70px] xl:mt-[120px] xl:mb-[210px] md:p-0 overflow-hidden w-full'>
       <div className="elemental-container">
         <div className="introduce-content content-center items-center mx-[10px] flex flex-wrap py-0  px-5 md:py-0 md:pl-[5px] md:pr-0 w-full">
-          <div className='first-img w-[60%] md:w-[25.268%] animate__animated animate__fadeInLeft flex'>
+          <motion.div
+          initial={{ opacity: 0,x:-100 }}
+          whileInView={{ opacity: 1,x:0 }}
+          viewport={{ once: true }}
+            transition={{duration:0.5, delay:0.25}}
+          className='first-img w-[60%] md:w-[25.268%]  flex'>
             <img width={580} height={870} src="assets/images/introduce-img-1.webp" className='inline-block align-middle' alt="" />
-          </div>
-          <div className='second-imgs w-[40%] md:w-[23.125%] animate__animated animate__fadeInLeft py-0 pl-[18px] pr-0 md:pr-[32px] md:my-0 md:pl-[20px] content-center items-center'>
+          </motion.div>
+          <motion.div
+          initial={{ opacity: 0,x:-100 }}
+          whileInView={{ opacity: 1,x:0 }}
+          viewport={{ once: true }}
+            transition={{duration:0.5, delay:0.25}}
+          className='second-imgs w-[40%] md:w-[23.125%]  py-0 pl-[18px] pr-0 md:pr-[32px] md:my-0 md:pl-[20px] content-center items-center'>
             <div className='mb-5 text-center w-full'>
               <img width={280} height={450}  src="assets/images/introduce-img-2.webp" alt="" />
             </div>
@@ -15,8 +25,13 @@ const Introduce = () => {
               <img src="assets/images/introduce-img-3.webp" alt="" width={280} height={300}/>
             </div>
           
-          </div>
-          <div className="right-content w-full md:w-[51.271%] content-center items-center mt-[24px] mx-0 mb-0 p-0 md:py-0 md:pr-0 md:pl-[25px] animate__animated animate__fadeInRight">
+          </motion.div>
+          <motion.div 
+          initial={{ opacity: 0,x:100 }}
+          whileInView={{ opacity: 1,x:0 }}
+          viewport={{ once: true }}
+            transition={{duration:0.5, delay:0.25}}
+          className="right-content w-full md:w-[51.271%] content-center items-center mt-[24px] mx-0 mb-0 p-0 md:py-0 md:pr-0 md:pl-[25px] ">
             <div className='title mb-5 w-full'>
               <h2 className='text-[44px] md:text-[54px] font-extrabold uppercase'>Something about Burgos</h2>
             </div>
@@ -45,7 +60,7 @@ const Introduce = () => {
             <div className='buttonToShop w-full '>
               <a href="/shop" className='custom-button1 pt-[22px] pb-5 px-[50px]'>go to shop</a>
             </div>
-          </div>
+          </motion.div>
 
         <div></div>
         </div>
