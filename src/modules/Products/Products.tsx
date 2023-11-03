@@ -1,13 +1,22 @@
+import { useEffect, useState } from 'react';
 import Sidebar from '../../components/Sidebar'
-import burgersData from "../../data/data.json";
 import ProductItem from './ProductItem';
+import axios from 'axios';
+import { Product } from '../../types/types';
+
 const Products = () => {
+  const [products, setProducts] = useState<Product[] | null>()
+  useEffect(()=>{
+    const url  = 'https://burgos-be.onrender.com/products'
+    axios.get(url).then((res) => setProducts(res.data))
+  },[])
   return (
     <div className='container'>
       <div className="products-wrapper  row mb-[35px] pt-24">
         <div className='products-content relative w-full px-[15px] lg:flex-[0_0_66.666667%] lg:max-w-[66.666667%]'>
-          <nav className='mb-[15px] block text-[15px] font-medium text-text-color md:mb-6 pl-[18px] border-l-2 border-l-yellow-color border-solid'>
-            <a href="/" className='text-[#0c4c7b] font-medium text-[15px]'>Home</a> - Shop
+          <nav className='mb-[15px] block text-[15px] font-medium text-text-color md:mb-6 pl-[18px] border-l-2 border-l-yellow border-solid'>
+            <a href="/" className='text-[#0c4c7b] font-medium text-[15px]'>Home </a>- 
+            <a href="/products" className='text-[#0c4c7b] font-medium text-[15px]'> Products</a>  
           </nav>
           <div className="header-title w-full md:w-auto">
             <h1 className='uppercase text-6xl font-extrabold'>Products</h1>
@@ -26,7 +35,7 @@ const Products = () => {
             </select>
           </form>
           <div className="product__list mb-10 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-7">
-          {burgersData.map((burger) => (
+          {products?.map((burger) => (
             <div key={burger.id} className="product-item  text-center">
               <ProductItem {...burger}/>
             </div>    

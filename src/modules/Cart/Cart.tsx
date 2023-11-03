@@ -8,7 +8,7 @@ const Cart = () => {
     bannerImg : 'assets/images/bg-cart.webp'
   }
   return (
-    <div className="bg-gray-color">
+    <div className="bg-gray">
     <Banner name={bannerInfo.name} description={bannerInfo.description} bannerImage={bannerInfo.bannerImg}/>
     <CartTotal/>
     </div>

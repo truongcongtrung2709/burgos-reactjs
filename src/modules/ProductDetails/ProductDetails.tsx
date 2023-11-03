@@ -1,18 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import productsData from "../../data/data.json"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { useShoppingCart } from '../../context/ShopingCartContext';
-type Product ={
-  id: number,
-  image:string,
-  name:string
-  oldPrice:string,
-  price:number,
-  sale:boolean,
-  desc:string,
-}
+import { Product } from '../../types/types';
+import axios from 'axios';
+
 const ProductDetails = () => {
   const {addAmountCartQuantity} = useShoppingCart();
   const [quantity, setQuantity] = useState(1)
@@ -21,14 +14,14 @@ const ProductDetails = () => {
   const {productId} = useParams() as{
     productId:string
   };
-  const [productDetails, setProductDetails] = useState<Product| undefined>({
-id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
-  });
-
+  
+  const [productDetails, setProductDetails] = useState<Product| undefined>();
+  
   useEffect(() => {
-    const product = productsData.find(product => product.id === parseInt(productId))
-    
-    setProductDetails(product)
+
+    const url  = `https://burgos-be.onrender.com/products/${productId}`
+    axios.get(url).then((res) => setProductDetails(res.data))
+  
     
   },[productId]);
   function handleAddCart () {
@@ -50,12 +43,12 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
     <div className='container'>
       <div className="productDetails flex pt-[96px] mb-[35px]">
         <div className="productDetails__content flex-[0_0_100%] max-w-full">
-          <nav className='bread-crumb mb-[15px] md:mb-6 block text-[15px] font-medium text-text-color pl-[18px] border-l-2 border-l-yellow-color border-solid'>
-            <a href="/" className='text-black-navy-color text-[15px] font-medium'>Home</a> -
-            <a href="" className='text-black-navy-color text-[15px] font-medium'>Products</a> - {productDetails?.name}
+          <nav className='bread-crumb mb-[15px] md:mb-6 block text-[15px] font-medium text-text-color pl-[18px] border-l-2 border-l-yellow border-solid'>
+            <a href="/" className='text-black-navy text-[15px] font-medium'>Home</a> -
+            <a href="/products" className='text-black-navy text-[15px] font-medium'>Products</a> - {productDetails?.name}
           </nav>
           <div className="productDetails__item relative md:flex flex-wrap">
-            <span className={`${productDetails?.sale? "" : "hidden"}sale absolute z-[1] inline-block min-h-[auto] w-auto text-white-color text-xs leading-[18px] font-semibold m-[15px] p-[5px] rounded-[14px] left-1.5  top-1.5 bg-orange-color font-nunito`}>Sale!</span>
+            <span className={`${productDetails?.sale? "" : "hidden"}sale absolute z-[1] inline-block min-h-[auto] w-auto text-white text-xs leading-[18px] font-semibold m-[15px] p-[5px] rounded-[14px] left-1.5  top-1.5 bg-orange font-nunito`}>Sale!</span>
             <div className="productDetails-left w-full md:w-[40%] mb-[2em]">
               <div className="img-item overflow-hidden relative ">
                 <img src={productDetails?.image} width={1000} height={1119} alt="" />
@@ -64,27 +57,27 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
             <div className="productDetails-summary mb-[2em] w-full pl-0 clear-none md:w-[60%] md:pl-[58px]">
               <h1 className='text-[35px] leading-[50px] font-extrabold md:text-[44px] md:leading-[65px] uppercase lg:text-6xl lg:leading-[81px] '>{productDetails?.name}</h1>
               <div className="rating">
-                <div className="float-left ml-0 mr-1  mb-0 overflow-hidden relative h-[25px] tracking-[10px] w-[129px] text-yellow-color">
+                <div className="float-left ml-0 mr-1  mb-0 overflow-hidden relative h-[25px] tracking-[10px] w-[129px] text-yellow">
                   <FontAwesomeIcon className='' icon={faStar}/>
                   <FontAwesomeIcon className='px-1' icon={faStar}/>
                   <FontAwesomeIcon className='' icon={faStar}/>
                   <FontAwesomeIcon className='px-1' icon={faStar}/>
                   <FontAwesomeIcon className='' icon={faStar}/>
                 </div>
-                <a href="#review" className='text-dark-gray-color ml-3'> (customer reviews)</a>
+                <a href="#review" className='text-dark-gray ml-3'> (customer reviews)</a>
               </div>
               <p className="price block pt-1  mb-9">
-                <span className='text-dark-gray-color line-through text-[1.25em] mr-[5px]'>{productDetails?.oldPrice}</span>
-                <span className='text-3xl leading-[38px] font-extrabold text-yellow-color mr-[5px]'>${productDetails?.price}.00</span>
+                <span className='text-dark-gray line-through text-[1.25em] mr-[5px]'>{productDetails?.oldPrice}</span>
+                <span className='text-3xl leading-[38px] font-extrabold text-yellow mr-[5px]'>${productDetails?.price}.00</span>
               </p>
               <div className="description">
                 <p className='text-[15px] mb-5 pt-1'>{productDetails?.desc}</p>
               </div>
               <form className='mb-[2em] mt-[30px] '>
                 <div className="quantity float-left mb-3 w-[132px] border mr-5 pt-[13px] pb-3.5 px-[25px] rounded-[5px] border-solid border-[#ccc] flex justify-between items-center">
-                  <span className='text-dark-gray-color text-lg p-0 border-[none] cursor-pointer' onClick={() => quantity===1? setQuantity(1) : setQuantity(quantity-1)}>-</span>
+                  <span className='text-dark-gray text-lg p-0 border-[none] cursor-pointer' onClick={() => quantity===1? setQuantity(1) : setQuantity(quantity-1)}>-</span>
                   <input type="number" value={quantity} readOnly className='w-[3.631em] text-center outline-none'/>
-                  <span className='text-dark-gray-color text-lg p-0 border-[none] cursor-pointer' onClick={() =>{setQuantity(quantity+1)}}>+</span>
+                  <span className='text-dark-gray text-lg p-0 border-[none] cursor-pointer' onClick={() =>{setQuantity(quantity+1)}}>+</span>
                 </div>
                 <button className='custom-button1 uppercase px-10 py-5 align-middle lg:px-[50px] lg:pt-[22px] pb-[20px]' onClick={handleAddCart}>Add To Cart</button>
               </form>
@@ -98,11 +91,11 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
             </div>
             <div className="tabs-container w-full lg:w-[80%] mx-auto pt-4 pb-[55px] px-0 clear-both">
               <ul className="wc-tabs  relative md:flex md:justify-center text-center mt-0 mb-6 mx-0 p-0">
-                <li className='description_tab bg-white-color  z-[2] relative  p-0 my-3 mx-0 md:mx-[-5px] md:my-0 md:px-[1em] md:py-0'>
-                  <a onClick={handleTabDescription} className={`${TabDesc ? "text-orange-color border-orange-color":"text-text-color border-text-color"} placeholder:file:border-solid border-[1px] rounded-[5px] font-medium px-9 py-1.5 my-3 mx-0 md:m-0 uppercase w-full block md:inline-block`}>Description</a>
+                <li className='description_tab bg-white  z-[2] relative  p-0 my-3 mx-0 md:mx-[-5px] md:my-0 md:px-[1em] md:py-0'>
+                  <a onClick={handleTabDescription} className={`${TabDesc ? "text-orange border-orange":"text-text-color border-text"} placeholder:file:border-solid border-[1px] rounded-[5px] font-medium px-9 py-1.5 my-3 mx-0 md:m-0 uppercase w-full block md:inline-block`}>Description</a>
                 </li>
-                <li className='description_tab bg-white-color  z-[2] relative  p-0 my-3 mx-0 md:mx-[-5px] md:my-0 md:px-[1em] md:py-0'>
-                  <a onClick={handleTabReview} className={`${TabRev ? "text-orange-color border-orange-color":"text-text-color border-text-color"} border-solid border-[1px] rounded-[5px]  font-medium px-9 py-1.5 my-3 mx-0 md:m-0 uppercase w-full block md:inline-block`}>Review(2)</a>
+                <li className='description_tab bg-white  z-[2] relative  p-0 my-3 mx-0 md:mx-[-5px] md:my-0 md:px-[1em] md:py-0'>
+                  <a onClick={handleTabReview} className={`${TabRev ? "text-orange border-orange":"text-text-color border-text"} border-solid border-[1px] rounded-[5px]  font-medium px-9 py-1.5 my-3 mx-0 md:m-0 uppercase w-full block md:inline-block`}>Review(2)</a>
                 </li>
               </ul>
               <div id='tab-content1' className={`${TabDesc ?"" :""}tab-content1 mt-0 mb-[2em] mx-0 p-0`}>
@@ -132,9 +125,9 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
                   <ol className='comment-list m-0 w-full mb-[46px] '>
                     <li className='comment-item mb-3'>
                       <div className="comment-container relative border pl-1.5 pr-3 py-1.5 rounded-[3px] border-solid border-[#cccccc]">
-                        <img src="/assets/images/icons/avatar.webp" width={60} height={60} className='float-left  w-8 h-auto border shadow-none m-0 p-0 border-solid border-[#e4e1e3] bg-[#ebe9eb] absolute left-6 top-6' alt="" />
+                        <img src="/assets/images/icons/avatar.png" width={60} height={60} className='float-left  w-8 h-auto border shadow-none m-0 p-0 border-solid border-[#e4e1e3] bg-[#ebe9eb] absolute left-6 top-6' alt="" />
                         <div className="comment-text rounded ml-[50px] mr-0 my-0 pt-[1em] pb-0 px-[1em]">
-                          <div className="star-rating float-right leading-[1] mt-[-3px] overflow-hidden relative h-[25px] text-base tracking-[10px] w-[129px]  ml-0 -mr-3.5 mb-0 text-yellow-color">
+                          <div className="star-rating float-right leading-[1] mt-[-3px] overflow-hidden relative h-[25px] text-base tracking-[10px] w-[129px]  ml-0 -mr-3.5 mb-0 text-yellow">
                           <FontAwesomeIcon icon={faStar}/>
                           <FontAwesomeIcon className='px-1' icon={faStar}/>
                           <FontAwesomeIcon className='' icon={faStar}/>
@@ -142,7 +135,7 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
                           <FontAwesomeIcon icon={faStar}/>
                           </div>
                           <p className='meta text-[15px] mt-[-9px] leading-[1.7] text-[#767676  mb-[1em] mx-0]'>
-                            <strong className='font-[800] text-[16px] text-black-navy-color mb-0'>admin</strong>
+                            <strong className='font-[800] text-[16px] text-black-navy mb-0'>admin</strong>
                             <span className='text-[15px]'>-</span>
                             <time className='italic text-[15px] text-[#979797]'>November 5, 2020</time>
                           </p>
@@ -154,9 +147,9 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
                     </li>
                     <li className='comment-item mb-3'>
                       <div className="comment-container relative border pl-1.5 pr-3 py-1.5 rounded-[3px] border-solid border-[#cccccc]">
-                        <img src="/assets/images/icons/avatar.webp" width={60} height={60} className='float-left  w-8 h-auto border shadow-none m-0 p-0 border-solid border-[#e4e1e3] bg-[#ebe9eb] absolute left-6 top-6' alt="" />
+                        <img src="/assets/images/icons/avatar.png" width={60} height={60} className='float-left  w-8 h-auto border shadow-none m-0 p-0 border-solid border-[#e4e1e3] bg-[#ebe9eb] absolute left-6 top-6' alt="" />
                         <div className="comment-text rounded ml-[50px] mr-0 my-0 pt-[1em] pb-0 px-[1em]">
-                          <div className="star-rating float-right leading-[1] mt-[-3px] overflow-hidden relative h-[25px] text-base tracking-[10px] w-[129px]  ml-0 -mr-3.5 mb-0 text-yellow-color">
+                          <div className="star-rating float-right leading-[1] mt-[-3px] overflow-hidden relative h-[25px] text-base tracking-[10px] w-[129px]  ml-0 -mr-3.5 mb-0 text-yellow">
                           <FontAwesomeIcon icon={faStar}/>
                           <FontAwesomeIcon className='px-1' icon={faStar}/>
                           <FontAwesomeIcon className='' icon={faStar}/>
@@ -164,7 +157,7 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
                           <FontAwesomeIcon icon={faStar}/>
                           </div>
                           <p className='meta text-[15px] mt-[-9px] leading-[1.7] text-[#767676  mb-[1em] mx-0]'>
-                            <strong className='font-[800] text-[16px] text-black-navy-color mb-0'>admin</strong>
+                            <strong className='font-[800] text-[16px] text-black-navy mb-0'>admin</strong>
                             <span className='text-[15px]'>-</span>
                             <time className='italic text-[15px] text-[#979797]'>November 5, 2020</time>
                           </p>
@@ -177,7 +170,7 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
                   </ol>
                 </div>
                 <div className='review_form'>
-                  <span className='block text-center text-3xl font-extrabold leading-[52px] text-black-navy-color uppercase font-nunito'>Add a review </span>
+                  <span className='block text-center text-3xl font-extrabold leading-[52px] text-black-navy uppercase font-nunito'>Add a review </span>
                   <form className="z-[1] w-full float-left">
                     <p className='comment-notes mt-0 mb-2.5 mx-0 block text-center font-semibold'>
                       <span className='email-notes text-[15px]'>Your email address will not be published.</span>
@@ -225,7 +218,7 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
                     </div>
                     <p className='comment-form-comment mt-0 mb-2.5 mx-0 max-w-[58rem]'>
                     <label className=' text-[#979797]'>Your review&nbsp;<span className="required  text-[#979797] align-middle">*</span></label>
-                    <textarea  className='h-[75px] w-full border rounded text-text-color w-full px-3 py-1.5 border-solid border-[#ccc]' cols={45} rows={8} required/>
+                    <textarea  className='h-[75px]  border rounded text-text-color w-full px-3 py-1.5 border-solid border-[#ccc]' cols={45} rows={8} required/>
                     </p>
                     <p className='comment-form-checkBox mt-0 mb-2.5 mx-0 max-w-[58rem]'>
                       <input type="checkbox" className='mr-[5px]'/>
@@ -247,7 +240,7 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
                     <div className="wrap-img mb-[18px]">
                       <img src="/assets/images/our-product1.webp" alt="" width={500} height={500} />
                     </div>
-                    <div className='star-rating overflow-hidden relative tracking-[10px] w-[129px] mt-5 text-yellow-color mx-auto text-[15px]'>
+                    <div className='star-rating overflow-hidden relative tracking-[10px] w-[129px] mt-5 text-yellow mx-auto text-[15px]'>
                       <FontAwesomeIcon icon={faStar}/>
                       <FontAwesomeIcon className='px-1' icon={faStar}/>
                       <FontAwesomeIcon icon={faStar}/>
@@ -255,7 +248,7 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
                       <FontAwesomeIcon icon={faStar}/>
                     </div>
                     <h2 className='text-center font-extrabold text-lg leading-8 mt-3 mb-[5px]'>Burger Bomb</h2>
-                    <p className='font-black text-center text-orange-color mt-1.5 font-nunito text-[26px]'>$9.00</p>
+                    <p className='font-black text-center text-orange mt-1.5 font-nunito text-[26px]'>$9.00</p>
                   </a>
                   <button className='custom-button1 pt-[13px] pb-3 px-[30px]'>Add To Cart</button>
                 </li>
@@ -264,7 +257,7 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
                     <div className="wrap-img mb-[18px]">
                       <img src="/assets/images/our-product2.webp" alt="" width={500} height={500} />
                     </div>
-                    <div className='star-rating overflow-hidden relative tracking-[10px] w-[129px] mt-5 text-yellow-color mx-auto text-[15px]'>
+                    <div className='star-rating overflow-hidden relative tracking-[10px] w-[129px] mt-5 text-yellow mx-auto text-[15px]'>
                       <FontAwesomeIcon icon={faStar}/>
                       <FontAwesomeIcon className='px-1' icon={faStar}/>
                       <FontAwesomeIcon icon={faStar}/>
@@ -272,7 +265,7 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
                       <FontAwesomeIcon icon={faStar}/>
                     </div>
                     <h2 className='text-center font-extrabold text-lg leading-8 mt-3 mb-[5px]'>Burger Bomb</h2>
-                    <p className='font-black text-center text-orange-color mt-1.5 font-nunito text-[26px]'>$9.00</p>
+                    <p className='font-black text-center text-orange mt-1.5 font-nunito text-[26px]'>$9.00</p>
                   </a>
                   <button className='custom-button1 pt-[13px] pb-3 px-[30px]'>Add To Cart</button>
                 </li>
@@ -281,7 +274,7 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
                     <div className="wrap-img mb-[18px]">
                       <img src="/assets/images/our-product3.webp" alt="" width={500} height={500} />
                     </div>
-                    <div className='star-rating overflow-hidden relative tracking-[10px] w-[129px] mt-5 text-yellow-color mx-auto text-[15px]'>
+                    <div className='star-rating overflow-hidden relative tracking-[10px] w-[129px] mt-5 text-yellow mx-auto text-[15px]'>
                       <FontAwesomeIcon icon={faStar}/>
                       <FontAwesomeIcon className='px-1' icon={faStar}/>
                       <FontAwesomeIcon icon={faStar}/>
@@ -289,7 +282,7 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
                       <FontAwesomeIcon icon={faStar}/>
                     </div>
                     <h2 className='text-center font-extrabold text-lg leading-8 mt-3 mb-[5px]'>Burger Bomb</h2>
-                    <p className='font-black text-center text-orange-color mt-1.5 font-nunito text-[26px]'>$9.00</p>
+                    <p className='font-black text-center text-orange mt-1.5 font-nunito text-[26px]'>$9.00</p>
                   </a>
                   <button className='custom-button1 pt-[13px] pb-3 px-[30px]'>Add To Cart</button>
                 </li>
@@ -298,7 +291,7 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
                     <div className="wrap-img mb-[18px]">
                       <img src="/assets/images/our-product4.webp" alt="" width={500} height={500} />
                     </div>
-                    <div className='star-rating overflow-hidden relative tracking-[10px] w-[129px] mt-5 text-yellow-color mx-auto text-[15px]'>
+                    <div className='star-rating overflow-hidden relative tracking-[10px] w-[129px] mt-5 text-yellow mx-auto text-[15px]'>
                       <FontAwesomeIcon icon={faStar}/>
                       <FontAwesomeIcon className='px-1' icon={faStar}/>
                       <FontAwesomeIcon icon={faStar}/>
@@ -306,7 +299,7 @@ id:0,image:'',name:'',price:0, oldPrice:'',sale:false,desc:''
                       <FontAwesomeIcon icon={faStar}/>
                     </div>
                     <h2 className='text-center font-extrabold text-lg leading-8 mt-3 mb-[5px]'>Burger Bomb</h2>
-                    <p className='font-black text-center text-orange-color mt-1.5 font-nunito text-[26px]'>$9.00</p>
+                    <p className='font-black text-center text-orange mt-1.5 font-nunito text-[26px]'>$9.00</p>
                   </a>
                   <button className='custom-button1 pt-[13px] pb-3 px-[30px]'>Add To Cart</button>
                 </li>

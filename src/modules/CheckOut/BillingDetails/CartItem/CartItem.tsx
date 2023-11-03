@@ -1,11 +1,21 @@
-import burgersData from "../../../../data/data.json"
+import { useEffect, useState } from "react";
 import { formatCurrency } from "../../../../utilities/formatCurrency";
+import { Product } from "../../../../types/types";
+import axios from "axios";
 type CartItemProps = {
   id:number,
   quantity:number
 }
 const CartItem = ({id,quantity} : CartItemProps) => {
-  const item = burgersData.find(i => i.id === id);
+  const [products, setProducts] = useState<Product[]| null>();
+
+  useEffect(() => {
+    const url  = 'https://burgos-be.onrender.com/products'
+    axios.get(url).then((res) => setProducts(res.data))
+
+
+  },[id]);
+  const item = products?.find(i => i.id === id);
   if(item ==null) return null;
   return (
     <>

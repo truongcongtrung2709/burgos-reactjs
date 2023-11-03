@@ -11,10 +11,10 @@ const FastOrder = () => {
         className="fastOrder-text md:order-10 xl:order-9 md:w-[70%] xl:w-[46.751%] flex relative">
           <div className="fastOrder-text__content flex flex-wrap w-full content-center items-center pt-0 pb-9 px-2.5 xl:px-2.5 xl:py-0">
             <div className="title mb-5 w-full">
-              <h2 className='text-4xl font-extrabold uppercase md:text-[55px] font-nunito text-white-color'>ORDER AND PAY IN A FEW MINUTES</h2>
+              <h2 className='text-4xl font-extrabold uppercase md:text-[55px] font-nunito text-white leading-[1]'>ORDER AND PAY IN A FEW MINUTES</h2>
             </div>
             <div className="description mb-5 w-full">
-              <span className='text-gray-color'>Praesent id congue justo. Donec vehicula odio id libero lobortis viverra. In rhoncus ac sem quis mollis. Vestibulum lacinia tellus posuere purus rutrum lobortis. Integer ut enim sed nunc malesuada suscipit. </span>
+              <span className='text-gray'>Praesent id congue justo. Donec vehicula odio id libero lobortis viverra. In rhoncus ac sem quis mollis. Vestibulum lacinia tellus posuere purus rutrum lobortis. Integer ut enim sed nunc malesuada suscipit. </span>
             </div>
             <div className="downloads w-full">
               <div className="elemental-container">

@@ -9,19 +9,19 @@ const Sidebar = () => {
         </form>
       </div>
       <div className='archive mb-[35px]'>
-        <h2 className='font-extrabold uppercase leading-none text-[15px] mb-5 px-3 py-[3px] border-l-[3px] border-l-yellow-color border-solid'>Archives</h2>
+        <h2 className='font-extrabold uppercase leading-none text-[15px] mb-5 px-3 py-[3px] border-l-[3px] border-l-yellow border-solid'>Archives</h2>
         <ul>
           <li>
-            <a href="/" className='text-black-navy-color'>October 2020</a>
+            <a href="/" className='text-black-navy'>October 2020</a>
           </li>
         </ul>
       </div>
       <div className='latest_posts mb-[35px]'>
-        <h2 className='posts-title font-extrabold uppercase leading-none text-[15px] mb-5 px-3 py-[3px] border-l-[3px] border-l-yellow-color border-solid'>Latest Posts</h2>
+        <h2 className='posts-title font-extrabold uppercase leading-none text-[15px] mb-5 px-3 py-[3px] border-l-[3px] border-l-yellow border-solid'>Latest Posts</h2>
         <div className="posts-list mt-[32px]">
           <div className="post-item flex items-start overflow-hidden mt-[14px] mb-[12px] p-0 ">
             <div className='item-left pr-[10px] float-left'>
-            <a href="/" className='text-black-navy-color'>
+            <a href="/" className='text-black-navy'>
               <img src="/assets/images/sb-latest-post1.webp" width={64} height={64}  alt="" />
             </a>
             </div>
@@ -37,7 +37,7 @@ const Sidebar = () => {
           </div>
           <div className="post-item flex items-start overflow-hidden mt-[14px] mb-[12px] p-0 ">
             <div className='item-left pr-[10px] float-left'>
-            <a href="/" className='text-black-navy-color'>
+            <a href="/" className='text-black-navy'>
               <img src="/assets/images/sb-latest-post2.webp" width={64} height={64}  alt="" />
             </a>
             </div>
@@ -53,7 +53,7 @@ const Sidebar = () => {
           </div>
           <div className="post-item flex items-start overflow-hidden mt-[14px] mb-[12px] p-0 ">
             <div className='item-left pr-[10px] float-left'>
-            <a href="/" className='text-black-navy-color'>
+            <a href="/" className='text-black-navy'>
               <img src="/assets/images/sb-latest-post3.webp" width={64} height={64}  alt="" />
             </a>
             </div>
@@ -69,7 +69,7 @@ const Sidebar = () => {
           </div>
           <div className="post-item flex items-start overflow-hidden mt-[14px] mb-[12px] p-0 ">
             <div className='item-left pr-[10px] float-left'>
-            <a href="/" className='text-black-navy-color'>
+            <a href="/" className='text-black-navy'>
               <img src="/assets/images/sb-latest-post4.webp" width={64} height={64}  alt="" />
             </a>
             </div>
@@ -85,7 +85,7 @@ const Sidebar = () => {
           </div>
           <div className="post-item flex items-start overflow-hidden mt-[14px] mb-[12px] p-0 ">
             <div className='item-left pr-[10px] float-left'>
-            <a href="/" className='text-black-navy-color'>
+            <a href="/" className='text-black-navy'>
               <img src="/assets/images/sb-latest-post5.webp" width={64} height={64}  alt="" />
             </a>
             </div>
@@ -102,8 +102,8 @@ const Sidebar = () => {
         </div>
       </div>
       <div style={{background:`url("/assets/images/ads.webp")`}} className='ads mb-[35px] bg-cover bg-[center_center] bg-no-repeat text-center px-0 py-[70px]'>
-        <h6 className='inline-block text-xs leading-[18px] text-white-color uppercase mb-1 px-2.5 py-[5px] rounded-[20px] bg-orange-color'>sale</h6>
-        <h5 className='font-black text-6xl leading-[76px] text-white-color'>-30%</h5>
+        <h6 className='inline-block text-xs leading-[18px] text-white uppercase mb-1 px-2.5 py-[5px] rounded-[20px] bg-orange'>sale</h6>
+        <h5 className='font-black text-6xl leading-[76px] text-white'>-30%</h5>
         <a href="/" className='custom-button1 px-10 py-5 lg:pt-[22px] lg:pb-5 lg:px-[50px]'>buy now</a>
       </div>
     </div>

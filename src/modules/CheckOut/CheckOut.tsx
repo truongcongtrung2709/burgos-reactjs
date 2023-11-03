@@ -10,7 +10,7 @@ const CheckOut = () => {
   }
   
   return (
-  <div className='bg-white-color'>
+  <div className='bg-white'>
     <Banner name={bannerInfo.name} description={bannerInfo.description} bannerImage={bannerInfo.bannerImg}/>
     <div className="container py-[46px] lg:py-[96px]">
       <div className="checkout__content row flex-col col">

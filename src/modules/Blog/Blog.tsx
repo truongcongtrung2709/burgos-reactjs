@@ -10,7 +10,7 @@ const Blog = () => {
   }
 
   return (
-    <div className='bg-white-color'>
+    <div className='bg-white'>
       <Banner name={bannerInfo.name} description={bannerInfo.description} bannerImage={bannerInfo.bannerImg}/>
       <div className="container">
         <div className="blog-grid-wrapper flex flex-wrap mx-[15px] text-center md:text-start pt-24 pb-[70px] lg:pt-[120px] lg:pb-[46px]">

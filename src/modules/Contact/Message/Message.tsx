@@ -38,7 +38,7 @@ const Message = () => {
                     </p>
                   </div>
                   <div className='btn-send w-full pr-[15px] pl-0  xs:flex-[0_0_100%] xs:max-w-[100%]'>
-                    <button className='custom-button1 pt-[22px] pb-5 px-[50px] hover:bg-orange-color hover:text-white-color'>Send</button>
+                    <button className='custom-button1 pt-[22px] pb-5 px-[50px] hover:bg-orange hover:text-white'>Send</button>
                   </div>
                 </div>
               </form>

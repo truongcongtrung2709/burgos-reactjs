@@ -19,10 +19,10 @@ const Follow = () => {
               <div className="w-full relative">
                     <div className="instagram-wrapper ">
                       <div className="instagram-title m-0 p-0 items-center  flex-wrap justify-center flex  flex-[0_0_auto] w-auto max-w-full relative">
-                        <div className="relative mr-[12px] pt-[8px] text-white-color text-[30px] w-[48px] h-[48px] rounded-[500px] leading-none text-center bg-hero-pattern">
+                        <div className="relative mr-[12px] pt-[8px] text-white text-[30px] w-[48px] h-[48px] rounded-[500px] leading-none text-center bg-hero-pattern">
                       <FontAwesomeIcon icon={faInstagram} />
                       </div>
-                      <div className="title relative mb-0 font-normal uppercase text-[20px] text-black-navy-color font-nunito flex-[0_0_auto] w-auto max-w-full break-words">@burgos_cafee</div>                  
+                      <div className="title relative mb-0 font-normal uppercase text-[20px] text-black-navy font-nunito flex-[0_0_auto] w-auto max-w-full break-words">@burgos_cafee</div>                  
                     </div>  
               </div>
             </div>

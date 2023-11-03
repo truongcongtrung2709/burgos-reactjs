@@ -36,7 +36,7 @@ const Introduce = () => {
               <h2 className='text-[44px] md:text-[54px] font-extrabold uppercase'>Something about Burgos</h2>
             </div>
             <div className='description w-full mb-[38px]'>
-              <p className='text-dark-gray-color'>				Etiam blandit, orci id malesuada sollicitudin, felis ligula ornare enim, ac consectetur dui nunc ut eros. Quisque ut nunc ex. Mauris scelerisque lobortis urna, in tempus urna hendrerit non.</p>
+              <p className='text-dark-gray'>				Etiam blandit, orci id malesuada sollicitudin, felis ligula ornare enim, ac consectetur dui nunc ut eros. Quisque ut nunc ex. Mauris scelerisque lobortis urna, in tempus urna hendrerit non.</p>
               <p className='font-semibold text-[#333333] mt-5'>Sed feugiat justo at laoreet convallis. Maecenas ac aliquam turpis. Ut aliquet leo ut gravida auctor.</p>
             </div>
             <div className='quality mb-[26px] flex flex-wrap '>

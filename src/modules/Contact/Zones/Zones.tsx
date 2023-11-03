@@ -25,7 +25,7 @@ const Zones = () => {
               <h3 className='text-lg leading-[38px] font-bold mb-0'>
                 Zone 1
               </h3>
-              <p className='delivery-price mb-0 text-orange-color text-[17px] font-extrabold'>
+              <p className='delivery-price mb-0 text-orange text-[17px] font-extrabold'>
                 <span>Free delivery</span>
               </p>
               <p className='mb-0'>Nam ac felis id libero rutrum pharetra eu non lacus</p>
@@ -35,7 +35,7 @@ const Zones = () => {
               <h3 className='text-lg leading-[38px] font-bold mb-0'>
                 Zone 2
               </h3>
-              <p className='delivery-price mb-0 text-orange-color text-[17px] font-extrabold'>
+              <p className='delivery-price mb-0 text-orange text-[17px] font-extrabold'>
                 <span>Free Delivery From $50 Order</span>
               </p>
               <p className='mb-0'>Nam ac felis id libero rutrum pharetra eu non lacus</p>
@@ -45,7 +45,7 @@ const Zones = () => {
               <h3 className='text-lg leading-[38px] font-bold mb-0'>
                 Zone 3
               </h3>
-              <p className='delivery-price mb-0 text-orange-color text-[17px] font-extrabold'>
+              <p className='delivery-price mb-0 text-orange text-[17px] font-extrabold'>
                 <span>Free Delivery From $100 Order</span>
               </p>
               <p className='mb-0'>Nam ac felis id libero rutrum pharetra eu non lacus</p>
@@ -55,7 +55,7 @@ const Zones = () => {
               <h3 className='text-lg leading-[38px] font-bold mb-0'>
                 Zone 4
               </h3>
-              <p className='delivery-price mb-0 text-orange-color text-[17px] font-extrabold'>
+              <p className='delivery-price mb-0 text-orange text-[17px] font-extrabold'>
                 <span>Free Delivery From $150 Order</span>
               </p>
               <p className='mb-0'>Nam ac felis id libero rutrum pharetra eu non lacus</p>

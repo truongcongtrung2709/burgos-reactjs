@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react'
 import { useShoppingCart } from '../../../../context/ShopingCartContext'
-import burgerData from "../../../../data/data.json"
 import { formatCurrency } from '../../../../utilities/formatCurrency'
+import { Product } from '../../../../types/types'
+import axios from 'axios'
 
 type CartItemProps = {
   id:number
@@ -9,8 +11,16 @@ type CartItemProps = {
 
 const CartItem = ({id, quantity}:CartItemProps) => {
   const {removeFromCart} = useShoppingCart();
-  const item = burgerData.find(i => i.id === id);
+  const [products, setProducts] = useState<Product[]| null>();
+
+  useEffect(() => {
+    const url  = 'https://burgos-be.onrender.com/products'
+    axios.get(url).then((res) => setProducts(res.data))
+
+  },[id]);
+  const item = products?.find(i => i.id === id);
   if(item ==null) return null;
+
   return (
     <>
     <li className="mini_cart_item flex leading-[2.5] justify-center overflow-hidden min-h-[100px] mb-3 border-b-[#f2f2f2] border-b border-solid">

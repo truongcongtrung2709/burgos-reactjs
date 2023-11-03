@@ -1,35 +1,20 @@
 import { useEffect, useState } from 'react'
 import Sidebar from '../../components/Sidebar'
 import { useParams } from 'react-router-dom'
-import blogsData from "../../data/article.json"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleRight, faCalendar, faFolder, faUserCircle } from '@fortawesome/free-regular-svg-icons'
-type Article = {
-  id:number,
-  title:string,
-  dateTime:string,
-  author:string,
-  category:string,
-  img:string,
-  content:string,
-  blockQuote:string,
-}
+import { Blog } from '../../types/types'
+import axios from 'axios'
+
 const BlogDetails = () => {
   const {blogId} = useParams() as {
     blogId: string
   }
-  const [blogDetails, setBlogDetails] = useState<Article|undefined>({
-    id:0,
-  title:"",
-  dateTime:"",
-  author:"",
-  category:"",
-  img:"", content:"",blockQuote: ""
-  })
+  const [blogDetails, setBlogDetails] = useState<Blog|null>()
   useEffect(() => {
-    const blog = blogsData.find(blog => blog.id === parseInt(blogId))
+    const url  = `https://burgos-be.onrender.com/blogs/${blogId}`
+    axios.get(url).then((res) => setBlogDetails(res.data))
     
-    setBlogDetails(blog)
     
   },[blogId]);
   

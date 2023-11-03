@@ -25,7 +25,7 @@ const Album = () => {
             className="picture p-[10px]">
               <div className="relative">
               <img src="assets/images/gal1.webp" alt="" />
-                <a href="/" className="absolute top-0 left-0 w-full h-full animate__animated animate__SlideInDown text-center transition-all mt-0 group hover:bg-yellow-color">
+                <a href="/" className="absolute top-0 left-0 w-full h-full animate__animated animate__SlideInDown text-center transition-all mt-0 group hover:bg-yellow">
                   <div className="mask-inner2 absolute top-1/2 w-full float-left p-3 mt-[-23px]">
                     <h3 className='mb-0 text-sm font-bold uppercase opacity-0 group-hover:opacity-100'>Cutlet</h3>
                   </div>  
@@ -40,7 +40,7 @@ const Album = () => {
             className="picture p-[10px] animate__animated animate__fadeIn">
               <div className="relative">
               <img src="assets/images/gal2.webp" alt="" />
-                <a href="/" className="absolute top-0 left-0 w-full h-full animate__animated animate__SlideInDown text-center transition-all mt-0 group hover:bg-yellow-color">
+                <a href="/" className="absolute top-0 left-0 w-full h-full animate__animated animate__SlideInDown text-center transition-all mt-0 group hover:bg-yellow">
                   <div className="mask-inner2 absolute top-1/2 w-full float-left p-3 mt-[-23px]">
                     <h3 className='mb-0 text-sm font-bold uppercase opacity-0 group-hover:opacity-100'>Buritos</h3>
                   </div>  
@@ -55,7 +55,7 @@ const Album = () => {
             className="picture p-[10px]">
               <div className="relative">
               <img src="assets/images/gal3.webp" alt="" />
-                <a href="/" className="absolute top-0 left-0 w-full h-full animate__animated animate__SlideInDown text-center transition-all mt-0 group hover:bg-yellow-color">
+                <a href="/" className="absolute top-0 left-0 w-full h-full animate__animated animate__SlideInDown text-center transition-all mt-0 group hover:bg-yellow">
                   <div className="mask-inner2 absolute top-1/2 w-full float-left p-3 mt-[-23px]">
                     <h3 className='mb-0 text-sm font-bold uppercase opacity-0 group-hover:opacity-100'>ingridients</h3>
                   </div>  
@@ -70,7 +70,7 @@ const Album = () => {
             className="picture p-[10px]">
               <div className="relative">
               <img src="assets/images/gal4.webp" alt="" />
-                <a href="/" className="absolute top-0 left-0 w-full h-full animate__animated animate__SlideInDown text-center transition-all mt-0 group hover:bg-yellow-color">
+                <a href="/" className="absolute top-0 left-0 w-full h-full animate__animated animate__SlideInDown text-center transition-all mt-0 group hover:bg-yellow">
                   <div className="mask-inner2 absolute top-1/2 w-full float-left p-3 mt-[-23px]">
                     <h3 className='mb-0 text-sm font-bold uppercase opacity-0 group-hover:opacity-100'>fast food</h3>
                   </div>  
@@ -85,7 +85,7 @@ const Album = () => {
              className="picture p-[10px]">
               <div className="relative">
               <img src="assets/images/gal5.webp" alt="" />
-                <a href="/" className="absolute top-0 left-0 w-full h-full animate__animated animate__SlideInDown text-center transition-all mt-0 group hover:bg-yellow-color">
+                <a href="/" className="absolute top-0 left-0 w-full h-full animate__animated animate__SlideInDown text-center transition-all mt-0 group hover:bg-yellow">
                   <div className="mask-inner2 absolute top-1/2 w-full float-left p-3 mt-[-23px]">
                     <h3 className='mb-0 text-sm font-bold uppercase opacity-0 group-hover:opacity-100'>fast food</h3>
                   </div>  
@@ -100,7 +100,7 @@ const Album = () => {
             className="picture p-[10px] animate__animated animate__fadeInRight">
               <div className="relative">
               <img src="assets/images/gal6.webp" alt="" />
-                <a href="/" className="absolute top-0 left-0 w-full h-full animate__animated animate__SlideInDown text-center transition-all mt-0 group hover:bg-yellow-color">
+                <a href="/" className="absolute top-0 left-0 w-full h-full animate__animated animate__SlideInDown text-center transition-all mt-0 group hover:bg-yellow">
                   <div className="mask-inner2 absolute top-1/2 w-full float-left p-3 mt-[-23px]">
                     <h3 className='mb-0 text-sm font-bold uppercase opacity-0 group-hover:opacity-100'>gril</h3>
                   </div>  

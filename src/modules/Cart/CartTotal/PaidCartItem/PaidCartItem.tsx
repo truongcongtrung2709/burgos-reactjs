@@ -1,7 +1,9 @@
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import burgerData from "../../../../data/data.json"
 import { useShoppingCart } from '../../../../context/ShopingCartContext'
+import { useEffect, useState } from 'react'
+import { Product } from '../../../../types/types'
+import axios from 'axios'
 
 type CartTotalProps = {
   id:number,
@@ -9,7 +11,13 @@ type CartTotalProps = {
 }
 const PaidCartItem = ({id,quantity} : CartTotalProps) => {
   const {increaseCartQuantity, decreaseCartQuantity} = useShoppingCart()
-  const item = burgerData.find(i => i.id === id);
+  const [products, setProducts] = useState<Product[]| null>();
+  useEffect(() => {
+    const url  = 'https://burgos-be.onrender.com/products'
+    axios.get(url).then((res) => setProducts(res.data))
+
+  },[id]);
+  const item = products?.find(i => i.id === id);
   if(item ==null) return null;
   return (
     <>
@@ -18,11 +26,11 @@ const PaidCartItem = ({id,quantity} : CartTotalProps) => {
                     
               
                   <div className="quantity flex items-center">
-                  <button onClick={()=>decreaseCartQuantity(id)} className='bg-hero-pattern w-5 h-5 rounded-full'><FontAwesomeIcon className='text-white-color p-[2px] ' icon={faMinus}/></button>
+                  <button onClick={()=>decreaseCartQuantity(id)} className='bg-hero-pattern w-5 h-5 rounded-full'><FontAwesomeIcon className='text-white p-[2px] ' icon={faMinus}/></button>
                   <div  className='w-10 text-center'>
                     {quantity}
                   </div>
-                  <button onClick={()=>increaseCartQuantity(id)} className='bg-hero-pattern w-5 h-5 rounded-full'><FontAwesomeIcon className='text-white-color p-[2px] ' icon={faPlus}/></button>
+                  <button onClick={()=>increaseCartQuantity(id)} className='bg-hero-pattern w-5 h-5 rounded-full'><FontAwesomeIcon className='text-white p-[2px] ' icon={faPlus}/></button>
                   </div>
                 </div>
                   <input type="text" placeholder='note...' className='w-full text-center'  />

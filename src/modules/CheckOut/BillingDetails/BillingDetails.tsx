@@ -1,11 +1,12 @@
 import { faCalendar } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import CartItem from "./CartItem";
 import { formatCurrency } from "../../../utilities/formatCurrency";
-import burgersData from "../../../data/data.json"
 import { useShoppingCart } from "../../../context/ShopingCartContext";
+import { Product } from "../../../types/types";
+import axios from "axios";
 type FormValues = {
   firstName: string,
   lastName: string,
@@ -38,13 +39,21 @@ const BillingDetails = () => {
     
   })
 
+  const [products, setProducts] = useState<Product[]| null>();
+  
+  useEffect(() => {
+    const url  = 'https://burgos-be.onrender.com/products'
+    axios.get(url).then((res) => setProducts(res.data))
+    
+    
+  },[]);
   return (
     <>
     <form>
       <div className="coupon relative bg-[#f7f6f7] text-[#515151] w-auto mt-0 mb-[2em] mx-0 pl-[3.5em] pr-[2em] py-[1em] border-t-[3px]  border-[#fbb731] border-solid">
-        <FontAwesomeIcon className="text-yellow-color pr-[5px]" icon={faCalendar}/>
+        <FontAwesomeIcon className="text-yellow pr-[5px]" icon={faCalendar}/>
         Have a coupon?
-        <a onClick={() => setDisplayCoupon(!displayCoupon)} className="hover:text-yellow-color">Click here to enter your code</a>
+        <a onClick={() => setDisplayCoupon(!displayCoupon)} className="hover:text-yellow">Click here to enter your code</a>
       </div>
       <div style={displayCoupon? {display:"block"} : {display:"none"}} className={`coupon-form  border text-left mx-0 my-[2em] p-5 rounded-[5px] border-solid animate__animated animate__fadeInDown border-[#d3ced2]`}>
         <p>If you have a coupon code, please apply it below.</p>
@@ -190,7 +199,7 @@ const BillingDetails = () => {
             <th className="font-bold border-t-[rgba(0,0,0,0.1)] border-t border-solid leading-[1.5em] px-3 py-[9px]">Subtotal</th>
             <td className="font-bold border-t-[rgba(0,0,0,0.1)] border-t border-solid px-3 py-[9px]">{formatCurrency(cartItems.reduce((total, cartItem) =>{
 
-const item = burgersData.find((i) => i.id === cartItem.id)
+const item = products?.find((i) => i.id === cartItem.id)
 
 return total + (item?.price||0) * cartItem.quantity
 },0)
@@ -200,7 +209,7 @@ return total + (item?.price||0) * cartItem.quantity
             <th className="font-bold border-t-[rgba(0,0,0,0.1)] border-t border-solid leading-[1.5em] px-3 py-[9px]">Total</th>
             <td className="font-bold border-t-[rgba(0,0,0,0.1)] border-t border-solid px-3 py-[9px]">{formatCurrency(cartItems.reduce((total, cartItem) =>{
 
-const item = burgersData.find((i) => i.id === cartItem.id)
+const item = products?.find((i) => i.id === cartItem.id)
 
 return total + (item?.price||0) * cartItem.quantity
 },0)
@@ -210,14 +219,14 @@ return total + (item?.price||0) * cartItem.quantity
       </table>
       <div className="payment rounded-[5px] bg-[#ebe9eb]">
         <div className="payment-notify text-left m-0 p-[1em] border-b-[#d3ced2] border-b border-solid ">
-          <div className="notify-content leading-loose text-left font-normal m-0 border-t-yellow-color border-t-[3px] border-solid  relative bg-[#f7f6f7] text-[#515151] w-auto mt-0 mb-[2em] mx-0 px-[2em] py-[1em] ">
-          <FontAwesomeIcon className="text-yellow-color pr-5" icon={faCalendar}/>
+          <div className="notify-content leading-loose text-left font-normal m-0 border-t-yellow border-t-[3px] border-solid  relative bg-[#f7f6f7] text-[#515151] w-auto mt-0 mb-[2em] mx-0 px-[2em] py-[1em] ">
+          <FontAwesomeIcon className="text-yellow pr-5" icon={faCalendar}/>
           <span>Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.</span>
           </div>
         </div>
         <div className="p-[1em] mb-[6px] flex flex-wrap">
-          <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <a href="#" className="hover:text-yellow-color text-black-navy-color">privacy policy</a></p>
-          <button type="submit" className="float-none w-full bg-orange-color text-white-color rounded-[5px] uppercase leading-[1] cursor-pointer relative px-[1em] py-[0.618em] font-bold border-none md:float-left md:w-auto" onClick={onSubmit}>Place order</button>
+          <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <a href="#" className="hover:text-yellow text-black-navy">privacy policy</a></p>
+          <button type="submit" className="float-none w-full bg-orange text-white rounded-[5px] uppercase leading-[1] cursor-pointer relative px-[1em] py-[0.618em] font-bold border-none md:float-left md:w-auto" onClick={onSubmit}>Place order</button>
         </div>
         
       </div>

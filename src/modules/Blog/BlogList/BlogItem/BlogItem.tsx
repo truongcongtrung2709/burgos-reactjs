@@ -21,21 +21,21 @@ const BlogItem = ({id,title,dateTime,author,category,img}:BlogItemProps) => {
       </div>
       <div className="blog-text">
         <ul className='meta-list block pt-[18px] px-0 pb-0 w-max-full w-full relative '>
-          <li className='inline-block text-[15px] text-dark-gray-color leading-6 mr-6 mb-3'>
-            <FontAwesomeIcon className='text-yellow-color mr-[5px]' icon={faCalendar}/>
+          <li className='inline-block text-[15px] text-dark-gray leading-6 mr-6 mb-3'>
+            <FontAwesomeIcon className='text-yellow mr-[5px]' icon={faCalendar}/>
             <span className='leading-[1.6] text-[#666666]'>{dateTime}</span>
           </li>
-          <li className='inline-block text-[15px] text-dark-gray-color leading-6 mr-6 mb-3'>
-            <FontAwesomeIcon className='text-yellow-color mr-[5px]' icon={faCalendar}/>
+          <li className='inline-block text-[15px] text-dark-gray leading-6 mr-6 mb-3'>
+            <FontAwesomeIcon className='text-yellow mr-[5px]' icon={faCalendar}/>
             <span className='leading-[1.6] text-[#666666]'>{author}</span>
           </li>
-          <li className='inline-block text-[15px] text-dark-gray-color leading-6 mr-6 mb-3'>
-            <FontAwesomeIcon className='text-yellow-color mr-[5px]' icon={faCalendar}/>
+          <li className='inline-block text-[15px] text-dark-gray leading-6 mr-6 mb-3'>
+            <FontAwesomeIcon className='text-yellow mr-[5px]' icon={faCalendar}/>
             <span className='leading-[1.6] text-[#666666]'>{category}</span>
           </li>
         </ul>
         <a href={`/blog/${id}`}>
-          <h2 className='blog-title text-center md:text-left text-2xl leading-9 font-black uppercase text-black-navy-color mb-6 md:text-3xl md:leading-[38px] transition-all duration-[0.3s] ease-[ease]'>{title}</h2>
+          <h2 className='blog-title text-center md:text-left text-2xl leading-9 font-black uppercase text-black-navy mb-6 md:text-3xl md:leading-[38px] transition-all duration-[0.3s] ease-[ease]'>{title}</h2>
         </a>
         <a href={`/blog/${id}`}  className='custom-button1 uppercase px-10 py-5 lg:pt-[22px] lg:pb-5 lg:px-[50px]'>Read More</a>
       </div>
