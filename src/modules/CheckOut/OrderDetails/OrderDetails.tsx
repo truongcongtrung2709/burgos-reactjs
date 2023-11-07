@@ -5,47 +5,60 @@ import { useForm } from "react-hook-form"
 import CartItem from "./CartItem";
 import { formatCurrency } from "../../../utilities/formatCurrency";
 import { useShoppingCart } from "../../../context/ShopingCartContext";
-import { Product } from "../../../types/types";
+import { Order, Product } from "../../../types/types";
 import axios from "axios";
-type FormValues = {
-  firstName: string,
-  lastName: string,
-  company: string,
-  country: string,
-  address: string,
-  apartment: string,
-  postCode: number,
-  townCity: string,
-  phone: number,
-  email: string,
-  orderNotes: string,
-  couponCode:string,
-}
+import { useNavigate } from "react-router-dom";
 
 
-const BillingDetails = () => {
-  const{cartItems, deleteCart}= useShoppingCart();
+
+const OrderDetails = () => {
+  const navigate = useNavigate();
+  const{
+    cartItems,
+     deleteCart
+    }= useShoppingCart();
   const [displayCoupon, setDisplayCoupon] = useState(false)
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>()
+  } = useForm<Order>()
+
+  
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
-    alert("Your receipt has been sent")
-    deleteCart();
-    window.location.reload()
+    const total =   cartItems.reduce((total, cartItem) =>{
+    const item = products?.find((i) => i.id === cartItem.id)   
+      return total + (item?.price||0) * cartItem.quantity
+      },0)
+      const cartItemId = cartItems.map(cartItem=> cartItem.id)
+      data.orderProducts = products?.filter(product => cartItemId.includes(product.id))
+      
+    data.subTotal = total ;
+    data.total = total;
     
-  })
+    console.log(data);
+    const url = 'https://burgos-be.onrender.com/orders'
+    axios.post(url,data)
+    .then((res)=>{
+      alert("Your receipt has been sent");
+      console.log(res); 
+      deleteCart();
+      navigate("/")
+    })
+    .catch((err)=> console.log(err.message)); 
+        
+      
+      
+      
+      
+    })
+      
 
   const [products, setProducts] = useState<Product[]| null>();
   
   useEffect(() => {
     const url  = 'https://burgos-be.onrender.com/products'
     axios.get(url).then((res) => setProducts(res.data))
-    
-    
   },[]);
   return (
     <>
@@ -116,7 +129,7 @@ const BillingDetails = () => {
               </label>
               <span className="w-full">
                 
-                <input {...register("apartment",{required:{value:true,message:"this is required"}})} type="text" className="h-10 border rounded text-text-color px-3 py-1.5 border-solid border-[#ccc] w-full" placeholder="Apartment, suite, unit, etc. (optional)" /> 
+                <input {...register("apartment")} type="text" className="h-10 border rounded text-text-color px-3 py-1.5 border-solid border-[#ccc] w-full" placeholder="Apartment, suite, unit, etc. (optional)" /> 
                 {errors?.apartment && <p className="text-red">{errors.apartment.message}</p>}
               </span>
             </div>
@@ -190,7 +203,7 @@ const BillingDetails = () => {
         </thead>
         <tbody>
           {cartItems.map((item) => (
-            <CartItem key={item.id} {...item}/>
+            <CartItem key={item.id} {...item} />
           ))}
           
         </tbody>
@@ -211,7 +224,7 @@ return total + (item?.price||0) * cartItem.quantity
 
 const item = products?.find((i) => i.id === cartItem.id)
 
-return total + (item?.price||0) * cartItem.quantity
+return  total + (item?.price||0) * cartItem.quantity 
 },0)
 )}</td>
           </tr>
@@ -238,4 +251,4 @@ return total + (item?.price||0) * cartItem.quantity
   )
 }
 
-export default BillingDetails
+export default OrderDetails

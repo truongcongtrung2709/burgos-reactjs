@@ -60,7 +60,7 @@ const Features = () => {
                           </div>
                           <div className="p-0 flex-[0_0_100%] max-w-full relative w-full md:basis-0 md:grow md:min-w-0" >
                             <a
-                              href="/"
+                              href="/products"
                               className="custom-button1 px-10 py-5 lg:px-[50px] lg:pt-[22px] lg:pb-[20px]"
                             >
                               Buy now
@@ -139,7 +139,7 @@ const Features = () => {
                           </div>
                           <div className="p-0 flex-[0_0_100%] max-w-full relative w-full md:flex-[0_0_auto] md:w-auto ">
                             <a
-                              href="/"
+                              href="/products"
                               className="custom-button1 px-10 py-5 lg:px-[50px] lg:pt-[22px] lg:pb-[20px]"
                             >
                               Buy now
@@ -213,7 +213,7 @@ const Features = () => {
                           </div>
                           <div className="p-0 flex-[0_0_100%] max-w-full relative w-full md:basis-0 md:grow md:min-w-0">
                             <a
-                              href="/"
+                              href="/products"
                               className="custom-button1 px-10 py-5 lg:px-[50px] lg:pt-[22px] lg:pb-[20px]"
                             >
                               Buy now

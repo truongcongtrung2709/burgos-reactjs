@@ -11,7 +11,7 @@ type CartItemProps = {
 
 const CartItem = ({id, quantity}:CartItemProps) => {
   const {removeFromCart} = useShoppingCart();
-  const [products, setProducts] = useState<Product[]| null>();
+  const [products, setProducts] = useState<Product[]>();
 
   useEffect(() => {
     const url  = 'https://burgos-be.onrender.com/products'

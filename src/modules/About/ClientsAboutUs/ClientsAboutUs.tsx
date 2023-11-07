@@ -28,7 +28,7 @@ const ClientsAboutUs = () => {
               <p>Praesent eleifend tellus consectetur erat maximus aliquet. Quisque felis felis, porttitor sits</p>
             </div>
             <div className='w-full'>
-              <a href="/" className='custom-button1 px-[40px] py-5 lg:pt-[22px] lg:pb-5 lg:px-[50px]  uppercase'>go to shop</a>
+              <a href="/products" className='custom-button1 px-[40px] py-5 lg:pt-[22px] lg:pb-5 lg:px-[50px]  uppercase'>go to shop</a>
             </div>
 
           </div>

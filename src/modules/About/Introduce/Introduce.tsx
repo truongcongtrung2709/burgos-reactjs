@@ -58,7 +58,7 @@ const Introduce = () => {
               </div>
             </div>
             <div className='buttonToShop w-full '>
-              <a href="/shop" className='custom-button1 pt-[22px] pb-5 px-[50px]'>go to shop</a>
+              <a href="/products" className='custom-button1 pt-[22px] pb-5 px-[50px]'>go to shop</a>
             </div>
           </motion.div>
 

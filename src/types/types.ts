@@ -17,3 +17,25 @@ export type Blog = {
   content:string,
   blockQuote:string,
 }
+export type CartItem ={
+  id:number,
+  quantity:number,
+}
+
+export type Order = {
+  firstName: string,
+  lastName: string,
+  company: string,
+  country: string,
+  address: string,
+  apartment: string,
+  postCode: number,
+  townCity: string,
+  phone: number,
+  email: string,
+  orderNotes: string,
+  couponCode:string,
+  orderProducts:Product[]|undefined,
+  subTotal: number,
+  total:number,
+}
